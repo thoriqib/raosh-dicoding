@@ -75,6 +75,7 @@ nav #menu-toggle {
 .hero {
   width: 100%;
   background-image: url("/images/heros/hero-image_2.jpg");
+  min-height: 100vh;
   background-position: center;
 }
 
