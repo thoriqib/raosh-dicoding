@@ -35,52 +35,68 @@ body {
   }
 }
 
-nav {
-  display: flex;
+/*
+  AppBar
+*/
+ 
+.app-bar {
+  padding: 8px 16px;
   background-color: $primarycolor;
-  justify-content: space-around;
-  padding: 20px 0;
-  align-items: center;
-  z-index: 3;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 10px;
+  position: sticky;
+  top: 0;
+  z-index: 99;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
 
-  .logo {
-    letter-spacing: 2px;
-    font-weight: bold;
-    font-size: 2em;
+  .app-bar__menu {
     display: flex;
     align-items: center;
-
-    .bi {
-      color: $tertiarycolor;
-    }
-    a {
-      display: inline-block;
-      text-decoration: none;
-      color: $tertiarycolor;
-      padding: 15px;
-    }
   }
 
-  ul {
+  .app-bar__menu button{
+    background-color: transparent;
+    border: none;
+    font-size: 18px;
+    padding: 8px;
+    cursor: pointer;
+  }
+
+  .app-bar__brand{
     display: flex;
-    list-style: none;
-    width: 50%;
-    justify-content: space-around;
-    font-size: 1.5em;
-
-    li a {
-      text-decoration: none;
-      color: #faf2da;
-      padding: 15px;
-
-      &:hover {
-        border-bottom: 3px solid $textcolor;
-      }
-    }
+    align-items: center;
   }
 
-  #menu-toggle {
-    display: none;
+  .app-bar__brand h1{
+    color: $tertiarycolor;
+    text-transform: uppercase;
+    font-size: 22px;
+    user-select: none;
+  }
+
+  .app-bar__navigation{
+    position: absolute;
+    top: 50px;
+    left: -180px;
+    width: 150px;
+    transition: all 0.3s;
+    padding: 8px;
+    background-color: $primarycolor;
+    overflow: hidden;
+  }
+
+  .app-bar__navigation.open{
+    left: 0;
+  }
+
+  .app-bar__navigation ul li a{
+    display: inline-block;
+    text-decoration: none;
+    color: $tertiarycolor;
+    padding: 8px;
+    margin-bottom: 5px;
+    width: 100%;
   }
 }
 
@@ -276,64 +292,3 @@ footer {
   color: $tertiarycolor;
 }
 
-@media screen and (max-width: 768px) {
-  nav {
-    ul {
-      width: 50%;
-    }
-  }
-  #maincontent {
-    .cards {
-      grid-template-columns: repeat(1, 1fr);
-    }
-  }
-
-  .list-testimoni {
-    flex-direction: column;
-  }
-}
-
-@media screen and (max-width: 576px) {
-  nav {
-    .logo {
-      z-index: 2;
-    }
-    ul {
-      position: absolute;
-      top: 0;
-      flex-direction: column;
-      background-color: $primarycolor;
-      height: 75vh;
-      justify-content: space-evenly;
-      align-items: center;
-      width: 100%;
-      transform: translateY(-100%);
-      transition: all 1s;
-      opacity: 0;
-      z-index: 2;
-    }
-
-    ul.slide {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    #menu-toggle {
-      display: inline-block;
-      border: none;
-      background-color: $primarycolor;
-      text-decoration: none;
-      cursor: pointer;
-      z-index: 10;
-      padding: 1em;
-      min-height: 44px;
-      min-width: 44px;
-
-      .bi {
-        color: $tertiarycolor;
-        font-weight: bold;
-        font-size: 4em;
-      }
-    }
-  }
-}
