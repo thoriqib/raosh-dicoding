@@ -7,11 +7,17 @@ import App from './views/app';
 const app = new App({
   button: document.querySelector('#hamburgerButton'),
   drawer: document.querySelector('#navigationDrawer'),
-  content: document.querySelector('#mainContent'),
+  content: document.querySelector('#maincontent'),
 });
 
-const menuToggle = document.querySelector('#menu-toggle');
-const nav = document.querySelector('nav ul');
+window.addEventListener('hashchange', () => {
+  app.renderPage();
+});
+
+window.addEventListener('load', () => {
+  app.renderPage();
+});
+
 const restaurantData = json.default.restaurants;
 const cardList = document.querySelector('.cards');
 
@@ -47,9 +53,5 @@ const getCard = (data) => {
   });
   return cards;
 };
-
-menuToggle.addEventListener('click', () => {
-  nav.classList.toggle('slide');
-});
 
 cardList.innerHTML = getCard(restaurantData);

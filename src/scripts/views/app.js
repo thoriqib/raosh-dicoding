@@ -1,7 +1,7 @@
-/* eslint-disable linebreak-style */
-/* eslint-disable class-methods-use-this */
 /* eslint-disable no-underscore-dangle */
 import DrawerInitiator from '../utils/drawer-initiator';
+import UrlParser from '../routes/url-parser';
+import routes from '../routes/routes';
 
 class App {
   constructor({ button, drawer, content }) {
@@ -18,7 +18,18 @@ class App {
       drawer: this._drawer,
       content: this._content,
     });
+
     // kita bisa menginisiasikan komponen lain bila ada
+  }
+
+  async renderPage() {
+    const url = UrlParser.parseActiveUrlWithCombiner();
+    let page = routes[url];
+    if (page === undefined) {
+      page = routes['/'];
+    }
+    this._content.innerHTML = await page.render();
+    await page.afterRender();
   }
 }
 
