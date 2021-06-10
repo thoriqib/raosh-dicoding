@@ -4,10 +4,8 @@ import { createRestaurantItemTemplate } from '../templates/template-creator';
 const Favorite = {
   async render() {
     return `
-        <div class="maincontent">
-          <h1>Favorite Restaurant</h1>
-          <ul class="cards"></ul>
-        </div>
+        <h1>Favorite Restaurant</h1>
+        <ul class="cards"></ul>
     `;
   },
 
@@ -15,9 +13,14 @@ const Favorite = {
     // Fungsi ini akan dipanggil setelah render()
     const restaurants = await FavoriteRestaurantIdb.getAllRestaurants();
     const restaurantsContainer = document.querySelector('.cards');
-    restaurants.forEach((restaurant) => {
-      restaurantsContainer.innerHTML += createRestaurantItemTemplate(restaurant);
-    });
+
+    if (restaurants.length === 0) {
+      restaurantsContainer.innerHTML = '<h1>You\'re not have any favorite restaurant</h1>';
+    } else {
+      restaurants.forEach((restaurant) => {
+        restaurantsContainer.innerHTML += createRestaurantItemTemplate(restaurant);
+      });
+    }
   },
 };
 
