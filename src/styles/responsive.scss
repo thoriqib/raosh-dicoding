@@ -28,15 +28,20 @@
       }
   }
 
-  .movie .movie__title {
+  .restaurant {
+    grid-template-columns: auto 1fr;
+
+    .restaurant__title{
       grid-column-start: 1;
       grid-column-end: 3;
-  }
- 
-  .movie .movie__overview {
+    }
+
+    .restaurant__overview{
       grid-column-start: 1;
       grid-column-end: 3;
+    }
   }
+  
 }
  
 @media screen and (min-width: 800px) {
@@ -46,19 +51,19 @@
 }
  
 @media screen and (min-width: 850px) {
-  .movies {
+  .restaurants {
       grid-template-columns: repeat(3, 1fr);
   }
 }
  
 @media screen and (min-width: 1200px) {
-  .movies {
+  .restaurants {
       grid-template-columns: repeat(4, 1fr);
   }
 }
  
 @media screen and (min-width: 1600px) {
-  .movies {
+  .restaurants {
       grid-template-columns: repeat(5, 1fr);
   }
 }
@@ -72,5 +77,14 @@
 
   .list-testimoni {
     flex-direction: column;
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .restaurant__menu{
+    flex-direction: column;
+
+    .menus{
+      margin: 10px 5px;
+    }
   }
 }

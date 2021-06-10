@@ -107,6 +107,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: -20px;
 
   &::before {
     content: "";
@@ -268,17 +269,35 @@ body {
   }
 }
 
+h3{
+  display: inline-block;
+}
+
 img {
   height: auto;
   max-width: 100%;
   vertical-align: middle;
 }
 
-.list-testimoni {
+.restaurant__menu{
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
-  margin: 1em;
+  justify-content: space-between;
+
+  .menu{
+    border: 1px solid black;
+    border-radius: 10px;
+    list-style: none;
+    padding: 10px;
+  }
+}
+
+.list-testimoni {
+  display: grid;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: auto;
+  grid-template-columns: repeat(3, 1fr);
 
   .testimoni {
     display: flex;
@@ -300,22 +319,65 @@ img {
   }
 }
 
-.movie {
+.content {
+    margin: 0 auto;
+    min-height: 100%;
+}
+
+.content .content__heading {
+    font-weight: normal;
+}
+
+/*
+   Like
+*/
+.like {
+    font-size: 18px;
+    position: fixed;
+    bottom: 16px;
+    right: 16px;
+    background-color: #db0000;
+    color: white;
+    border: 0;
+    border-radius: 50%;
+    width: 55px;
+    height: 55px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.restaurant__categories{
+  display: flex;
+  list-style: none;
+  justify-content: start;
+
+  li{
+    background-color: $primarycolor;
+    color: $tertiarycolor;
+    padding: 10px;
+    border-radius: 20px;
+    margin: 0 10px 10px 10px;
+  }
+}
+
+.restaurant{
   margin: 0 auto;
   width: 100%;
   max-width: 800px;
   display: grid;
   grid-template-columns: 1fr;
   gap: 18px 16px;
-}
- 
-.movie .movie__poster {
-  width: 100%;
-  max-width: 400px;
-}
- 
-.movie .movie__info h4 {
-  margin: 8px 0;
+
+  .restaurant__poster{
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .restaurant__info h4{
+    margin: 8px 0;
+  }
 }
 
 footer {
